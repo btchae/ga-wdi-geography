@@ -14,9 +14,11 @@ if (!error && response.statusCode == 200) {
 	  	console.log('API data below...');
 	  	console.log(body);
 	    response_data = body;
+	    JSON.parse(response_data);
+	    console.log(typeof JSON.parse(response_data));
 	    	// res.json(response_data);
 	  }
-	  res.json(response_data);
+	  res.render('index.ejs', JSON.parse(response_data));
 	})
 	// res.json(response_data);
 	// res.send('index workin!')
