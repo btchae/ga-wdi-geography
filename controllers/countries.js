@@ -4,11 +4,11 @@ var router = express.Router();
 var Countries = require('../models/countries.js');
 var request = require('request');
 var util = require('util');
-var reponse_data;
 
 /////Index
 router.get('/', function(req,res){
 	console.log('testing index');
+	var reponse_data;
 	request('http://api.geonames.org/searchJSON?q='+ 'japan' +'&maxRows=1&username=geoproject', function(error,response,body) {
 if (!error && response.statusCode == 200) {
 	  	console.log('API data below...');
@@ -24,7 +24,25 @@ if (!error && response.statusCode == 200) {
 	// res.send('index workin!')
 	// console.log(response_data);
 	// res.send(response_data);
-})
+});
+
+router.post('/:id', function(req, res){
+  console.log('------------------------------------');
+  console.log(req.body.country);
+  // http://api.geonames.org/countryInfoJSON?formatted=true&lang=en&country=KR&username=geoproject&style=full
+  	request('http://api.geonames.org/searchJSON?q='+ req.body.country +'&maxRows=1&username=geoproject', function(error,response,body) {
+if (!error && response.statusCode == 200) {
+	  	console.log('API data below...');
+	  	console.log(body);
+	    response_data = body;
+	    JSON.parse(response_data);
+	    console.log(typeof JSON.parse(response_data));
+	    console.log(JSON.parse(response_data).geonames[0].countryCode);
+	    	// res.json(response_data);
+	  }
+	  res.render('show.ejs', JSON.parse(response_data));
+	})
+  });
 
 // router.get('/', function(req, res) {
 // 	var response_data;

@@ -4,9 +4,10 @@
 	<title></title>
 </head>
 <body>
-<%=totalResultsCount%>
+<%=geonames[0].toponymName%>
+<%=geonames[0].population%>
 <br>
-<form action="/products/" method="POST" id="newform">
+<form action="./:id" method="POST" id="newform">
 	<input type="text" name="name" placeholder="name"></input>
 	<br>
 	<input type="text" name="country" placeholder="country"></input>
