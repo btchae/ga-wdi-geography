@@ -3,7 +3,6 @@ var express = require('express');
 var router = express.Router();
 var Country = require('../models/countries.js');
 var request = require('request');
-var util = require('util');
 
 // /////Index
 // router.get('/', function(req,res){
@@ -41,9 +40,9 @@ router.get('/new', function(req,res){
 	res.render('new.ejs');
 });
 
-////User page/First Show
+////User page/MoreShow
 router.get('/:id/info', function(req,res) {
-	console.log('testing show');
+	console.log('testing moreshow');
 	Country.findById(req.params.id, function(err,user) {
 		console.log(user);
   	request('http://api.geonames.org/searchJSON?q='+ user.countries +'&maxRows=1&username=geoproject', function(error,response,body) {
@@ -57,7 +56,13 @@ if (!error && response.statusCode == 200) {
 	    var country = new Country(req.body);
 	    	// res.json(response_data);
 	  }
+	  console.log(req.params);
+	  Country.findOneAndUpdate( { "_id" : req.params.id}, req.body, function(err,user){
+	  	console.log('life');
+	  	console.log(req.body);
+	  })
 	    console.log(JSON.parse(response_data).geonames[0].countryCode);
+	    // Country.set('countrycode', JSON.parse(response_data).geonames[0].countryCode);
 	  res.render('moreshow.ejs', JSON.parse(response_data));
 
 	});		
@@ -65,9 +70,9 @@ if (!error && response.statusCode == 200) {
 });
 });
 
-///Country Page/MoreShow
+///Country Page/FirstShow
 router.get('/:id', function(req,res){
-	console.log('testing moreshow');
+	console.log('testing show');
 	Country.findById(req.params.id, function(err,user) {
 		console.log(user);
     	res.render('show.ejs', {user});
