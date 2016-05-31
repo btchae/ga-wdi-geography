@@ -1,11 +1,7 @@
 {
   "name": "gaproject2",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
-  "engines": {
-    "node":"4.4.4"
-    },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -21,5 +17,15 @@
     "morgan": "^1.7.0",
     "request": "^2.72.0",
     "util": "^0.10.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/btchae/ga-wdi-geography.git"
+  },
+  "bugs": {
+    "url": "https://github.com/btchae/ga-wdi-geography/issues"
+  },
+  "homepage": "https://github.com/btchae/ga-wdi-geography#readme",
+  "description": ""
 }

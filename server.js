@@ -21,6 +21,7 @@ app.use(methodOverride(function(req, res){
   }
 }));
 
+
 // DATABASE
 mongoose.connect(mongoUri);
 
