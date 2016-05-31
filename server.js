@@ -18,6 +18,7 @@ app.use(methodOverride(function(req, res){
     var method = req.body._method;
     delete req.body._method;
     return method;
+    
   }
 }));
 
