@@ -2,7 +2,7 @@
 var express = require('express'),
 	app = express(),
 	bodyParser = require('body-parser'),
-	mongoUri = process.env.MONGOLAB_URI || "mongodb://localhost/countries",
+	mongoUri = process.env.MONGODB_URI|| "mongodb://localhost/countries",
 	methodOverride = require('method-override'),
 	mongoose = require('mongoose'),
 	morgan = require('morgan'),
