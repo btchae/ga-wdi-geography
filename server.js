@@ -18,7 +18,7 @@ app.use(methodOverride(function(req, res){
     var method = req.body._method;
     delete req.body._method;
     return method;
-    
+
   }
 }));
 
@@ -34,6 +34,7 @@ app.use('/countries', countryController);
 // LISTEN
 app.listen(port);
 console.log('=============================');
+console.log(mongoUri);
 console.log('Server running off PORT: ' + port);
 console.log('=============================');
 
