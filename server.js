@@ -2,7 +2,7 @@
 var express = require('express'),
 	app = express(),
 	bodyParser = require('body-parser'),
-	db = process.env.MONGODB_URI || "mongodb://localhost/countries",
+	mongoUri = process.env.MONGOLAB_URI || "mongodb://localhost/countries",
 	methodOverride = require('method-override'),
 	mongoose = require('mongoose'),
 	morgan = require('morgan'),
@@ -22,7 +22,7 @@ app.use(methodOverride(function(req, res){
 }));
 
 // DATABASE
-mongoose.connect(db);
+mongoose.connect(mongoUri);
 
 // CONTROLLERS
 var countryController = require('./controllers/countries.js');
