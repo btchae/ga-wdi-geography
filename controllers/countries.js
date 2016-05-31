@@ -82,16 +82,14 @@ router.get('/:id/edit', function(req,res) {
 });
 });
 
-// ///Update
-// router.put('/:id', function(req,res) {
-// 	console.log(req.params.id);
-// 	console.log('testing put');
-// 	Furniture.findOneAndUpdate( { "_id" : req.params.id }, req.body, function(err, furniture) {
-// 	    console.log(furniture.qty);
-// 	  	var id = req.params.id;
-// 	    res.redirect('/products/'+id);
-// 	  });
-// });
+///Update
+router.put('/:id', function(req,res) {
+	console.log(req.params.id);
+	console.log('testing put');
+	Country.findOneAndUpdate( { "_id" : req.params.id}, req.body, function(err, user) {
+	    res.redirect('/countries/'+req.params.id);
+	  });
+});
 
 ///Create user
 router.post('/', function(req,res){
