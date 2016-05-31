@@ -4,15 +4,20 @@
 	<title></title>
 </head>
 <body>
-<%=geonames[0].toponymName%>
-<%=geonames[0].population%>
-<br>
-<form action="./:id" method="POST" id="newform">
-	<input type="text" name="name" placeholder="name"></input>
+<div class="container" id="index-container">
+<h3>Index</h3>
+<%for (i = 0; i < user.length; i++) {%>
+<div>
+<a href="/countries/<%=user[i].id%>"><%=user[i].username%></a>
+</div>
+<%}%>
+<a href="/countries/new">Make a new user!</a>
+<!-- <form action="/countries/:id" method="POST" id="newform">
+	<input type="text" name="username" placeholder="username"></input>
 	<br>
 	<input type="text" name="country" placeholder="country"></input>
 	<br>
-	<button>Submit</button>
+	<button>Submit</button> -->
 	<br>
 </form>
 </body>
