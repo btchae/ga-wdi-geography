@@ -41,6 +41,39 @@ router.get('/new', function(req,res){
 	res.render('new.ejs');
 });
 
+////User page/First Show
+router.get('/:id/info', function(req,res) {
+	console.log('testing show');
+	Country.findById(req.params.id, function(err,user) {
+		console.log(user);
+  	request('http://api.geonames.org/searchJSON?q='+ user.countries +'&maxRows=1&username=geoproject', function(error,response,body) {
+if (!error && response.statusCode == 200) {
+	  	console.log('API data below...');
+	  	console.log(body);
+	    response_data = body;
+	    JSON.parse(response_data);
+	    console.log(typeof JSON.parse(response_data));
+	    console.log(JSON.parse(response_data).geonames[0].countryCode);
+	    var country = new Country(req.body);
+	    	// res.json(response_data);
+	  }
+	    console.log(JSON.parse(response_data).geonames[0].countryCode);
+	  res.render('moreshow.ejs', JSON.parse(response_data));
+
+	});		
+    	// res.render('show.ejs', {user});
+});
+});
+
+///Country Page/MoreShow
+router.get('/:id', function(req,res){
+	console.log('testing moreshow');
+	Country.findById(req.params.id, function(err,user) {
+		console.log(user);
+    	res.render('show.ejs', {user});
+})
+});
+
 ///Create user
 router.post('/', function(req,res){
 	console.log('testing post');
@@ -56,6 +89,20 @@ router.post('/', function(req,res){
 		}
 	})
 });
+
+////Delete User
+router.delete('/:id', function(req, res){
+  console.log('deleting');
+  console.log(req.params.id);
+Country.findOneAndRemove(req.params.id, function(err) {
+  	if (err) {
+  		console.log(err);
+  	} else {
+  		console.log(req.params.id);
+  		res.redirect('/countries/');
+  	}
+  });
+  });
 // router.post('/:id', function(req, res){
 //   console.log('------------------------------------');
 //   console.log(req.body.country);
@@ -73,16 +120,9 @@ router.post('/', function(req,res){
 // 	  }
 // 	    console.log(JSON.parse(response_data).geonames[0].countryCode);
 // 	  res.render('show.ejs', JSON.parse(response_data));
-// 	  	country.save(function(err) {
-// 		if(err) {
-// 			console.log(err);
-// 		} else {
-// 			console.log('New instance saved');
-// 			res.send(country)
-// 		}
+
 // 	});
-// 	})
-//   });
+// 	});
 
 
 ////Create

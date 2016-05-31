@@ -9,6 +9,11 @@
 <%for (i = 0; i < user.length; i++) {%>
 <div>
 <a href="/countries/<%=user[i].id%>"><%=user[i].username%></a>
+<br>
+<form action="/countries/<%= user[i].id %>" method="POST">
+		  <input type="hidden" name="_method" value="DELETE"/>
+		  <button>DELETE</button>
+		</form>
 </div>
 <%}%>
 <a href="/countries/new">Make a new user!</a>

@@ -6,7 +6,7 @@ var Countries = require('./countries.js');
 ///Schema
 var countrySchema = new mongoose.Schema({
   username: String,
-  countries: String
+  countries: Array
 });
 
 // Map it through Mongoose
