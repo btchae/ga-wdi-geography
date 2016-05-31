@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div class="container">
+<form action="/countries/<%=user.id%>/" method="POST" id="editform">
+	<input type="text" name="name" value="<%=user.username%>"></input>
+	<br>
+	<input type="text" name="countries" value="<%=user.countries%>"></input>
+	<br>
+	<input type="hidden" name="_method" value="PUT"/>
+	<button>Submit</button>
+	<br>
+	</form>
+	</div>
+</body>
+</html>

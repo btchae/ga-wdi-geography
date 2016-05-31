@@ -74,6 +74,25 @@ router.get('/:id', function(req,res){
 })
 });
 
+////Edit
+router.get('/:id/edit', function(req,res) {
+	console.log('testing edit');
+	Country.findById(req.params.id, function(err,user) {
+    	res.render('edit.ejs', {user});
+});
+});
+
+// ///Update
+// router.put('/:id', function(req,res) {
+// 	console.log(req.params.id);
+// 	console.log('testing put');
+// 	Furniture.findOneAndUpdate( { "_id" : req.params.id }, req.body, function(err, furniture) {
+// 	    console.log(furniture.qty);
+// 	  	var id = req.params.id;
+// 	    res.redirect('/products/'+id);
+// 	  });
+// });
+
 ///Create user
 router.post('/', function(req,res){
 	console.log('testing post');
@@ -94,7 +113,7 @@ router.post('/', function(req,res){
 router.delete('/:id', function(req, res){
   console.log('deleting');
   console.log(req.params.id);
-Country.findOneAndRemove(req.params.id, function(err) {
+Country.findOneAndRemove({'_id' : req.params.id}, function(err) {
   	if (err) {
   		console.log(err);
   	} else {
