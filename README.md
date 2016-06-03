@@ -2,7 +2,7 @@
 My second project at GA WDI: a geography app!
 
 
-# Connect Four ! ! !
+# Geography ! ! !
 [https://gaproject2.herokuapp.com/countries](https://gaproject2.herokuapp.com/countries)
 
 ### Description
